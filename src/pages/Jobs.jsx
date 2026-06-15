@@ -165,7 +165,7 @@ export default function Jobs() {
                 </div>
 
                 <Link
-                  to="/contact"
+                  to={`/contact?type=candidate&role=${encodeURIComponent(job.title)}`}
                   className="relative overflow-hidden group h-11 px-6 rounded-xl bg-gradient-to-r from-brand-indigo to-brand-violet text-white text-xs font-semibold hover:shadow-lg hover:shadow-brand-indigo/20 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5 transition-all duration-300 shrink-0 w-full sm:w-auto"
                 >
                   <span className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12 -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-out pointer-events-none" />

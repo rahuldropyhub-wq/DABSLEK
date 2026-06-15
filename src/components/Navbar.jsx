@@ -131,24 +131,26 @@ export default function Navbar() {
             </button>
             
             {/* Dropdown Menu */}
-            <div className="absolute top-[24px] left-0 mt-2 w-[280px] bg-white border border-brand-border/60 rounded-3xl shadow-xl p-4 opacity-0 scale-95 pointer-events-none group-hover/dropdown:opacity-100 group-hover/dropdown:scale-100 group-hover/dropdown:pointer-events-auto transition-all duration-200 z-50">
-              <div className="flex flex-col gap-1">
-                {[
-                  { to: "/services/permanent-hiring", title: "Permanent Hiring" },
-                  { to: "/services/contract-hiring", title: "Contract Hiring" },
-                  { to: "/services/payroll-processing", title: "Payroll Processing" },
-                  { to: "/services/rpo", title: "RPO Solutions" },
-                  { to: "/services/delivery-executive-hiring", title: "Delivery Executive Hiring" },
-                  { to: "/services/college-placements", title: "College Placements" }
-                ].map((s, idx) => (
-                  <Link
-                    key={idx}
-                    to={s.to}
-                    className="p-3 rounded-2xl hover:bg-slate-50 border border-transparent hover:border-brand-indigo/10 flex flex-col text-left transition-all"
-                  >
-                    <span className="text-xs font-bold text-brand-dark hover:text-brand-indigo transition-colors">{s.title}</span>
-                  </Link>
-                ))}
+            <div className="absolute top-full -left-4 pt-4 w-[280px] opacity-0 scale-95 pointer-events-none group-hover/dropdown:opacity-100 group-hover/dropdown:scale-100 group-hover/dropdown:pointer-events-auto transition-all duration-200 z-50 origin-top-left">
+              <div className="bg-white border border-brand-border/60 rounded-3xl shadow-xl p-4">
+                <div className="flex flex-col gap-1">
+                  {[
+                    { to: "/services/permanent-hiring", title: "Permanent Hiring" },
+                    { to: "/services/contract-hiring", title: "Contract Hiring" },
+                    { to: "/services/payroll-processing", title: "Payroll Processing" },
+                    { to: "/services/rpo", title: "RPO Solutions" },
+                    { to: "/services/delivery-executive-hiring", title: "Delivery Executive Hiring" },
+                    { to: "/services/college-placements", title: "College Placements" }
+                  ].map((s, idx) => (
+                    <Link
+                      key={idx}
+                      to={s.to}
+                      className="p-3 rounded-2xl hover:bg-slate-50 border border-transparent hover:border-brand-indigo/10 flex flex-col text-left transition-all"
+                    >
+                      <span className="text-xs font-bold text-brand-dark hover:text-brand-indigo transition-colors">{s.title}</span>
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

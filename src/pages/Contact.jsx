@@ -1,11 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import {
   Sparkles, Mail, Phone, MapPin, Send, ArrowRight,
   Clock, CheckCircle, MessageSquare, Building2,
   ExternalLink, ChevronDown,
-  User, Briefcase, Users, Zap, Camera, Globe2, Share2
+  User, Briefcase, Users, Zap, Camera, Globe2, Share2, Paperclip
 } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 import contactHero from '../assets/contact-hero.png';
 import contactOffice from '../assets/contact-office.png';
@@ -56,12 +57,36 @@ const faqs = [
 
 /* ─── Main Component ────────────────────────────────────────────── */
 export default function Contact() {
+  const location = useLocation();
+  const [formType, setFormType] = useState('employer'); // 'employer' or 'candidate'
+  
   const [formData, setFormData] = useState({
-    name: '', email: '', phone: '', company: '', service: '', employees: '', message: '',
+    name: '', email: '', phone: '', 
+    // Employer fields
+    company: '', service: '', employees: '', 
+    // Candidate fields
+    role: '', linkedin: '', resume: null,
+    // Shared
+    message: '',
   });
+  
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
+
+  // Parse URL params on mount or location change
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const typeParam = searchParams.get('type');
+    const roleParam = searchParams.get('role');
+    
+    if (typeParam === 'candidate') {
+      setFormType('candidate');
+      if (roleParam) {
+        setFormData(prev => ({ ...prev, role: roleParam }));
+      }
+    }
+  }, [location]);
 
   const services = [
     'Permanent Hiring',
@@ -311,14 +336,14 @@ export default function Contact() {
                       </div>
                       <h3 className="font-display font-black text-2xl text-brand-dark">Message Sent!</h3>
                       <p className="text-brand-muted text-sm max-w-xs leading-relaxed text-center">
-                        Thank you for reaching out to DABSLEK. Our staffing experts will review your request and contact you within 4 business hours.
+                        Thank you for reaching out to DABSLEK. Our team will review your request and contact you shortly.
                       </p>
                       <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-brand-pill border border-brand-indigo/15 text-brand-indigo text-xs font-semibold">
                         <Clock className="w-3.5 h-3.5" />
                         <span>Expected response: within 4 hours</span>
                       </div>
                       <button
-                        onClick={() => { setFormSubmitted(false); setFormData({ name: '', email: '', phone: '', company: '', service: '', employees: '', message: '' }); }}
+                        onClick={() => { setFormSubmitted(false); setFormData({ name: '', email: '', phone: '', company: '', service: '', employees: '', message: '', role: '', linkedin: '', resume: null }); }}
                         className="mt-2 text-xs font-semibold text-brand-indigo hover:text-brand-violet transition-colors underline underline-offset-2"
                       >
                         Send another message →
@@ -326,22 +351,37 @@ export default function Contact() {
                     </motion.div>
                   ) : (
                     <>
-                      {/* Form header */}
+                      {/* Form Header & Tabs */}
                       <div className="mb-8">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-pill border border-brand-indigo/15 text-brand-indigo text-xs font-semibold mb-3">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-pill border border-brand-indigo/15 text-brand-indigo text-xs font-semibold mb-6">
                           <Sparkles className="w-3 h-3" />
-                          <span>Get a Free Consultation</span>
+                          <span>Get in Touch</span>
                         </div>
-                        <h2 className="font-display font-extrabold text-2xl lg:text-3xl text-brand-dark leading-tight">
-                          Tell Us About Your Hiring Needs
+                        <h2 className="font-display font-extrabold text-2xl lg:text-3xl text-brand-dark leading-tight mb-6">
+                          How can we help you?
                         </h2>
-                        <p className="text-brand-muted text-sm mt-2">
-                          Fill in the details below — the more you share, the faster we can match you with the right talent.
-                        </p>
+                        
+                        {/* Custom Tabs */}
+                        <div className="flex p-1 bg-white border border-brand-border/60 rounded-2xl w-full max-w-md shadow-sm">
+                          <button 
+                            onClick={() => setFormType('employer')}
+                            className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${formType === 'employer' ? 'bg-gradient-to-r from-brand-indigo to-brand-violet text-white shadow-md' : 'text-brand-muted hover:text-brand-dark'}`}
+                          >
+                            <Building2 className="w-4 h-4" />
+                            Hire Talent
+                          </button>
+                          <button 
+                            onClick={() => setFormType('candidate')}
+                            className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${formType === 'candidate' ? 'bg-gradient-to-r from-brand-indigo to-brand-violet text-white shadow-md' : 'text-brand-muted hover:text-brand-dark'}`}
+                          >
+                            <User className="w-4 h-4" />
+                            Find a Job
+                          </button>
+                        </div>
                       </div>
 
                       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-                        {/* Row 1: Name + Email */}
+                        {/* Shared Row 1: Name + Email */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                           <div className="flex flex-col gap-1.5">
                             <label htmlFor="name" className="text-[10px] font-black text-brand-dark uppercase tracking-widest flex items-center gap-1.5">
@@ -357,19 +397,19 @@ export default function Contact() {
                           </div>
                           <div className="flex flex-col gap-1.5">
                             <label htmlFor="email" className="text-[10px] font-black text-brand-dark uppercase tracking-widest flex items-center gap-1.5">
-                              <Mail className="w-3 h-3 text-brand-indigo" /> Work Email *
+                              <Mail className="w-3 h-3 text-brand-indigo" /> Email Address *
                             </label>
                             <input
                               type="email" id="email" required
                               value={formData.email}
                               onChange={e => setFormData({ ...formData, email: e.target.value })}
-                              placeholder="rahul@company.com"
+                              placeholder={formType === 'employer' ? "rahul@company.com" : "rahul@gmail.com"}
                               className="h-12 px-4 rounded-xl bg-white border border-brand-border/70 focus:outline-none focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/20 transition-all text-sm text-brand-dark placeholder:text-brand-muted/50"
                             />
                           </div>
                         </div>
 
-                        {/* Row 2: Phone + Company */}
+                        {/* Phone */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                           <div className="flex flex-col gap-1.5">
                             <label htmlFor="phone" className="text-[10px] font-black text-brand-dark uppercase tracking-widest flex items-center gap-1.5">
@@ -383,75 +423,127 @@ export default function Contact() {
                               className="h-12 px-4 rounded-xl bg-white border border-brand-border/70 focus:outline-none focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/20 transition-all text-sm text-brand-dark placeholder:text-brand-muted/50"
                             />
                           </div>
-                          <div className="flex flex-col gap-1.5">
-                            <label htmlFor="company" className="text-[10px] font-black text-brand-dark uppercase tracking-widest flex items-center gap-1.5">
-                              <Building2 className="w-3 h-3 text-brand-indigo" /> Company Name
-                            </label>
-                            <input
-                              type="text" id="company"
-                              value={formData.company}
-                              onChange={e => setFormData({ ...formData, company: e.target.value })}
-                              placeholder="Acme Technologies Pvt Ltd"
-                              className="h-12 px-4 rounded-xl bg-white border border-brand-border/70 focus:outline-none focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/20 transition-all text-sm text-brand-dark placeholder:text-brand-muted/50"
-                            />
-                          </div>
+                          
+                          {/* Dynamic Field: Company (Employer) or Role (Candidate) */}
+                          {formType === 'employer' ? (
+                            <div className="flex flex-col gap-1.5">
+                              <label htmlFor="company" className="text-[10px] font-black text-brand-dark uppercase tracking-widest flex items-center gap-1.5">
+                                <Building2 className="w-3 h-3 text-brand-indigo" /> Company Name
+                              </label>
+                              <input
+                                type="text" id="company"
+                                value={formData.company}
+                                onChange={e => setFormData({ ...formData, company: e.target.value })}
+                                placeholder="Acme Technologies Pvt Ltd"
+                                className="h-12 px-4 rounded-xl bg-white border border-brand-border/70 focus:outline-none focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/20 transition-all text-sm text-brand-dark placeholder:text-brand-muted/50"
+                              />
+                            </div>
+                          ) : (
+                            <div className="flex flex-col gap-1.5">
+                              <label htmlFor="role" className="text-[10px] font-black text-brand-dark uppercase tracking-widest flex items-center gap-1.5">
+                                <Briefcase className="w-3 h-3 text-brand-indigo" /> Applying For (Role) *
+                              </label>
+                              <input
+                                type="text" id="role" required
+                                value={formData.role}
+                                onChange={e => setFormData({ ...formData, role: e.target.value })}
+                                placeholder="e.g. Senior Backend Developer"
+                                className="h-12 px-4 rounded-xl bg-white border border-brand-border/70 focus:outline-none focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/20 transition-all text-sm text-brand-dark placeholder:text-brand-muted/50"
+                              />
+                            </div>
+                          )}
                         </div>
 
-                        {/* Row 3: Service + Team Size */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                          <div className="flex flex-col gap-1.5">
-                            <label htmlFor="service" className="text-[10px] font-black text-brand-dark uppercase tracking-widest flex items-center gap-1.5">
-                              <Briefcase className="w-3 h-3 text-brand-indigo" /> Service Needed *
-                            </label>
-                            <div className="relative">
-                              <select
-                                id="service" required
-                                value={formData.service}
-                                onChange={e => setFormData({ ...formData, service: e.target.value })}
-                                className="w-full h-12 px-4 pr-10 rounded-xl bg-white border border-brand-border/70 focus:outline-none focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/20 transition-all text-sm text-brand-dark appearance-none"
-                              >
-                                <option value="" disabled>Select a service…</option>
-                                {services.map((s, i) => <option key={i} value={s}>{s}</option>)}
-                              </select>
-                              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted pointer-events-none" />
+                        {/* Dynamic Row: Employer (Services + Hires) vs Candidate (LinkedIn + Resume) */}
+                        {formType === 'employer' ? (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div className="flex flex-col gap-1.5">
+                              <label htmlFor="service" className="text-[10px] font-black text-brand-dark uppercase tracking-widest flex items-center gap-1.5">
+                                <Briefcase className="w-3 h-3 text-brand-indigo" /> Service Needed *
+                              </label>
+                              <div className="relative">
+                                <select
+                                  id="service" required
+                                  value={formData.service}
+                                  onChange={e => setFormData({ ...formData, service: e.target.value })}
+                                  className="w-full h-12 px-4 pr-10 rounded-xl bg-white border border-brand-border/70 focus:outline-none focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/20 transition-all text-sm text-brand-dark appearance-none"
+                                >
+                                  <option value="" disabled>Select a service…</option>
+                                  {services.map((s, i) => <option key={i} value={s}>{s}</option>)}
+                                </select>
+                                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted pointer-events-none" />
+                              </div>
+                            </div>
+                            <div className="flex flex-col gap-1.5">
+                              <label htmlFor="employees" className="text-[10px] font-black text-brand-dark uppercase tracking-widest flex items-center gap-1.5">
+                                <Users className="w-3 h-3 text-brand-indigo" /> No. of Hires Needed
+                              </label>
+                              <div className="relative">
+                                <select
+                                  id="employees"
+                                  value={formData.employees}
+                                  onChange={e => setFormData({ ...formData, employees: e.target.value })}
+                                  className="w-full h-12 px-4 pr-10 rounded-xl bg-white border border-brand-border/70 focus:outline-none focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/20 transition-all text-sm text-brand-dark appearance-none"
+                                >
+                                  <option value="">Select range…</option>
+                                  {['1–5', '6–20', '21–50', '51–100', '100+'].map((r, i) => <option key={i} value={r}>{r}</option>)}
+                                </select>
+                                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted pointer-events-none" />
+                              </div>
                             </div>
                           </div>
-                          <div className="flex flex-col gap-1.5">
-                            <label htmlFor="employees" className="text-[10px] font-black text-brand-dark uppercase tracking-widest flex items-center gap-1.5">
-                              <Users className="w-3 h-3 text-brand-indigo" /> No. of Hires Needed
-                            </label>
-                            <div className="relative">
-                              <select
-                                id="employees"
-                                value={formData.employees}
-                                onChange={e => setFormData({ ...formData, employees: e.target.value })}
-                                className="w-full h-12 px-4 pr-10 rounded-xl bg-white border border-brand-border/70 focus:outline-none focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/20 transition-all text-sm text-brand-dark appearance-none"
-                              >
-                                <option value="">Select range…</option>
-                                {['1–5', '6–20', '21–50', '51–100', '100+'].map((r, i) => <option key={i} value={r}>{r}</option>)}
-                              </select>
-                              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-muted pointer-events-none" />
+                        ) : (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div className="flex flex-col gap-1.5">
+                              <label htmlFor="linkedin" className="text-[10px] font-black text-brand-dark uppercase tracking-widest flex items-center gap-1.5">
+                                <Globe2 className="w-3 h-3 text-brand-indigo" /> LinkedIn Profile
+                              </label>
+                              <input
+                                type="url" id="linkedin"
+                                value={formData.linkedin}
+                                onChange={e => setFormData({ ...formData, linkedin: e.target.value })}
+                                placeholder="https://linkedin.com/in/..."
+                                className="h-12 px-4 rounded-xl bg-white border border-brand-border/70 focus:outline-none focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/20 transition-all text-sm text-brand-dark placeholder:text-brand-muted/50"
+                              />
+                            </div>
+                            <div className="flex flex-col gap-1.5">
+                              <label htmlFor="resume" className="text-[10px] font-black text-brand-dark uppercase tracking-widest flex items-center gap-1.5">
+                                <Paperclip className="w-3 h-3 text-brand-indigo" /> Upload Resume *
+                              </label>
+                              <div className="relative">
+                                <input
+                                  type="file" id="resume" required
+                                  onChange={e => setFormData({ ...formData, resume: e.target.files[0] })}
+                                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                />
+                                <div className="w-full h-12 px-4 rounded-xl bg-white border border-dashed border-brand-indigo/40 hover:bg-brand-indigo/5 transition-all text-sm text-brand-dark flex items-center justify-between">
+                                  <span className="text-brand-muted truncate">
+                                    {formData.resume ? formData.resume.name : "Choose file (PDF, DOCX)"}
+                                  </span>
+                                  <span className="text-xs font-bold text-brand-indigo bg-brand-indigo/10 px-2 py-1 rounded-md">Browse</span>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        )}
 
                         {/* Message */}
                         <div className="flex flex-col gap-1.5">
                           <label htmlFor="message" className="text-[10px] font-black text-brand-dark uppercase tracking-widest flex items-center gap-1.5">
-                            <MessageSquare className="w-3 h-3 text-brand-indigo" /> Message / Requirements *
+                            <MessageSquare className="w-3 h-3 text-brand-indigo" /> {formType === 'employer' ? 'Message / Requirements *' : 'Cover Letter / Message'}
                           </label>
                           <textarea
-                            id="message" required rows="4"
+                            id="message" required={formType === 'employer'} rows="4"
                             value={formData.message}
                             onChange={e => setFormData({ ...formData, message: e.target.value })}
-                            placeholder="Tell us about the roles you need to fill, required skills, experience levels, location preferences, and any specific timelines…"
+                            placeholder={formType === 'employer' ? "Tell us about the roles you need to fill, required skills, and timelines…" : "Tell us briefly why you are a great fit for this role..."}
                             className="p-4 rounded-xl bg-white border border-brand-border/70 focus:outline-none focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/20 transition-all text-sm text-brand-dark placeholder:text-brand-muted/50 resize-none leading-relaxed"
                           />
                         </div>
 
                         {/* Privacy note */}
                         <p className="text-[11px] text-brand-muted leading-relaxed">
-                          🔒 Your information is 100% confidential and will only be used to match you with the right DABSLEK service. We never sell or share your data.
+                          🔒 Your information is 100% confidential. We never sell or share your data.
                         </p>
 
                         {/* Submit */}
@@ -470,7 +562,7 @@ export default function Contact() {
                             </>
                           ) : (
                             <>
-                              <span className="relative z-10">Send My Request</span>
+                              <span className="relative z-10">{formType === 'employer' ? 'Send My Request' : 'Submit Application'}</span>
                               <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                             </>
                           )}
