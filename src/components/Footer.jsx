@@ -8,13 +8,13 @@ const FooterFlipLink = ({ to, children }) => {
   return (
     <Link
       to={to}
-      className="relative block overflow-hidden group h-5 text-sm text-[#94A3B8] cursor-pointer"
+      className="relative w-fit block overflow-hidden group h-5 text-sm text-[#94A3B8] cursor-pointer"
     >
       <div className="flex flex-col transition-transform duration-300 ease-in-out transform group-hover:-translate-y-1/2">
-        <span className="h-5 flex items-center text-[#94A3B8]">
+        <span className="h-5 flex items-center text-[#94A3B8] whitespace-nowrap">
           {children}
         </span>
-        <span className="h-5 flex items-center text-white font-semibold">
+        <span className="h-5 flex items-center text-white font-semibold whitespace-nowrap">
           {children}
         </span>
       </div>
