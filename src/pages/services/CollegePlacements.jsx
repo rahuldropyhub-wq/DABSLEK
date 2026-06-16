@@ -1,187 +1,370 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Sparkles, ArrowRight, CheckCircle, Users, GraduationCap, Building2, CalendarSync } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { GraduationCap, ArrowRight, CheckCircle2, Users, Building2, Calendar, Target, BookOpen, Search, Briefcase, Zap, Plus, Minus } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import img1 from '../../assets/ChatGPT Image Jun 16, 2026, 04_03_56 PM.png';
+import img2 from '../../assets/ChatGPT Image Jun 16, 2026, 04_04_00 PM.png';
+import img3 from '../../assets/ChatGPT Image Jun 16, 2026, 04_04_03 PM.png';
+
+const FadeIn = ({ children, delay = 0, className = "" }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+    className={className}
+  >
+    {children}
+  </motion.div>
+);
 
 export default function CollegePlacements() {
-  const steps = [
-    { title: "Sourcing & Scoping", desc: "We identify accredited institutions matching your talent criteria." },
-    { title: "Outreach & Dates", desc: "We secure drive dates and coordinate directly with university placement cells." },
-    { title: "Pre-Placement & Tests", desc: "We host online webinars and conduct automated aptitude screenings." },
-    { title: "Interviews & Offers", desc: "Live interview coordination leading to immediate offer generation." }
-  ];
+  const [openFaq, setOpenFaq] = useState(null);
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const pipelineY = useTransform(scrollYProgress, [0, 1], [0, 400]);
 
   return (
-    <div className="bg-white min-h-screen overflow-x-hidden">
+    <div className="bg-white min-h-screen overflow-x-hidden font-sans selection:bg-fuchsia-500/30">
       
       {/* ═══════════════════════════════════════════
-          1. ENERGETIC HERO SECTION
+          1. CINEMATIC HERO SECTION (LIGHT THEME)
       ═══════════════════════════════════════════ */}
-      <section className="relative pt-32 pb-32 overflow-hidden bg-white">
-        
-        {/* Dynamic Vibrant Gradient Background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          <div className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] rounded-full bg-fuchsia-400/20 blur-[120px] mix-blend-multiply" />
-          <div className="absolute top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-cyan-400/20 blur-[120px] mix-blend-multiply" />
-          <div className="absolute -bottom-[20%] left-[20%] w-[70%] h-[70%] rounded-full bg-yellow-400/20 blur-[120px] mix-blend-multiply" />
+      <section className="relative pt-32 pb-32 lg:pt-48 lg:pb-40 overflow-hidden text-slate-900">
+        {/* Dynamic Vibrant Glowing Background */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] bg-fuchsia-400/20 rounded-full blur-[120px] mix-blend-multiply animate-pulse"></div>
+          <div className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-cyan-400/20 rounded-full blur-[120px] mix-blend-multiply"></div>
+          {/* Subtle tech grid */}
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSA0MCAwIEwgMCAwIDAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] z-0"></div>
         </div>
 
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-16 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            
-            {/* Left Content */}
-            <div className="w-full lg:w-1/2 flex flex-col items-start text-left">
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-fuchsia-100 to-cyan-100 border border-white/50 shadow-sm mb-8"
-              >
-                <GraduationCap className="w-5 h-5 text-fuchsia-600" />
-                <span className="text-sm font-bold tracking-widest uppercase bg-gradient-to-r from-fuchsia-600 to-cyan-600 bg-clip-text text-transparent">Campus Sourcing</span>
-              </motion.div>
-              
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="font-display font-black text-5xl lg:text-7xl text-slate-900 leading-[1.1] tracking-tight mb-6"
-              >
-                Launch Careers.<br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 via-purple-600 to-cyan-500">Hire at Scale.</span>
-              </motion.h1>
-              
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-xl text-slate-600 mb-10 max-w-xl leading-relaxed font-medium"
-              >
-                We coordinate massive university recruitment campaigns to help you secure the brightest graduating talent before your competitors do.
-              </motion.p>
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <Link
-                  to="/contact"
-                  className="group relative inline-flex items-center justify-center h-16 px-10 rounded-full bg-slate-900 text-white font-bold text-lg overflow-hidden shadow-2xl transition-all hover:scale-105 hover:shadow-cyan-500/25"
-                >
-                  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-fuchsia-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <span className="relative z-10 flex items-center gap-3">
-                    Coordinate a Drive <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
-              </motion.div>
-            </div>
-
-            {/* Right Visual: Floating Glassmorphism Cards */}
-            <div className="w-full lg:w-1/2 relative h-[500px] lg:h-[600px] hidden md:block">
-              {/* Card 3 (Main Background Image) */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1, delay: 0 }}
-                className="absolute right-0 top-1/2 -translate-y-1/2 w-[90%] h-[90%] rounded-[3rem] overflow-hidden shadow-2xl z-10 border border-slate-100"
-              >
-                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1200" alt="Graduation" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-fuchsia-900/20 to-transparent"></div>
-              </motion.div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
-          2. MASONRY GRID UX
-      ═══════════════════════════════════════════ */}
-      <section className="py-24 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="font-display font-black text-4xl lg:text-5xl text-slate-900 mb-6">Mastering the Campus Drive</h2>
-            <p className="text-xl text-slate-600">Hiring freshers requires massive coordination. We handle the logistics so you can focus on making offers.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 max-w-6xl mx-auto">
-            
-            {/* Large Feature 1 */}
-            <div className="md:col-span-8 rounded-[2rem] bg-white border border-slate-200 p-10 flex flex-col justify-between overflow-hidden relative group shadow-sm hover:shadow-xl transition-shadow">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-fuchsia-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500"></div>
-              <div className="mb-8">
-                <div className="w-14 h-14 rounded-2xl bg-fuchsia-100 flex items-center justify-center mb-6">
-                  <Building2 className="w-7 h-7 text-fuchsia-600" />
-                </div>
-                <h3 className="font-display font-bold text-3xl text-slate-900 mb-3">University Alliances</h3>
-                <p className="text-lg text-slate-600 max-w-md">Access accredited institutions across regional tech hubs. We maintain the relationships so you don't have to.</p>
-              </div>
-              <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800" className="w-full h-[200px] object-cover rounded-2xl" alt="University" />
-            </div>
-
-            {/* Small Feature 1 */}
-            <div className="md:col-span-4 rounded-[2rem] bg-slate-900 text-white p-10 flex flex-col justify-between relative overflow-hidden group shadow-sm hover:shadow-xl transition-shadow">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div>
-                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
-                  <Users className="w-7 h-7 text-cyan-400" />
-                </div>
-                <h3 className="font-display font-bold text-2xl mb-3">Bulk Scheduling</h3>
-                <p className="text-slate-400">Process hundreds of fresher candidates seamlessly in single weekend drives.</p>
-              </div>
-            </div>
-
-            {/* Small Feature 2 */}
-            <div className="md:col-span-5 rounded-[2rem] bg-gradient-to-br from-fuchsia-600 to-purple-600 text-white p-10 flex flex-col justify-center relative overflow-hidden shadow-sm hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center mb-6">
-                <CheckCircle className="w-7 h-7 text-white" />
-              </div>
-              <h3 className="font-display font-bold text-2xl mb-3">Fresher Appraisals</h3>
-              <p className="text-fuchsia-100">Automated aptitude, reasoning, and technical tests compiled by DABSLEK experts.</p>
-            </div>
-
-            {/* Large Feature 2 */}
-            <div className="md:col-span-7 rounded-[2rem] bg-white border border-slate-200 p-10 flex flex-col md:flex-row items-center gap-8 overflow-hidden shadow-sm hover:shadow-xl transition-shadow">
-              <div className="flex-1">
-                <h3 className="font-display font-bold text-3xl text-slate-900 mb-3">Onboarding Webinars</h3>
-                <p className="text-lg text-slate-600">Transition workshops helping graduates adapt to corporate culture before day one.</p>
-              </div>
-              <div className="w-full md:w-1/2 h-[200px] rounded-2xl overflow-hidden shrink-0">
-                <img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Webinar" />
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
-          3. ANIMATED STEPPER
-      ═══════════════════════════════════════════ */}
-      <section className="py-32 bg-white">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-16 text-center">
-          <h2 className="font-display font-black text-4xl lg:text-5xl text-slate-900 mb-20">The Campus Placement Flow</h2>
+        <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-16 flex flex-col lg:flex-row items-center gap-16">
           
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative max-w-5xl mx-auto">
-            {/* Connecting Line for Desktop */}
-            <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-1 bg-slate-100 rounded-full z-0"></div>
+          {/* Left Text Content */}
+          <div className="w-full lg:w-[50%]">
+            <FadeIn>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-fuchsia-500/30 bg-fuchsia-50 mb-8 backdrop-blur-md">
+                <GraduationCap className="w-4 h-4 text-fuchsia-600" />
+                <span className="text-xs font-bold tracking-widest uppercase text-fuchsia-600">Next-Gen Talent Acquisition</span>
+              </div>
+            </FadeIn>
             
-            {steps.map((step, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.15 }}
-                className="relative z-10 flex flex-col items-center group"
+            <FadeIn delay={0.1}>
+              <h1 className="font-display font-black text-5xl sm:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-6 text-slate-900">
+                Capture the <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 via-purple-600 to-cyan-500">Brightest Minds.</span>
+              </h1>
+            </FadeIn>
+
+            <FadeIn delay={0.2}>
+              <p className="text-xl text-slate-600 mb-10 max-w-xl leading-relaxed font-light">
+                Enterprise-scale university recruitment. We orchestrate massive, precision-targeted campus drives to secure the top 1% of graduating talent before your competitors even arrive.
+              </p>
+            </FadeIn>
+
+            <FadeIn delay={0.3}>
+              <Link
+                to="/contact"
+                className="group relative inline-flex h-14 px-8 rounded-full bg-slate-900 text-white font-bold text-base items-center justify-center gap-3 overflow-hidden transition-all hover:scale-105 shadow-xl hover:shadow-cyan-500/25"
               >
-                <div className="w-24 h-24 rounded-full bg-white border-4 border-slate-50 shadow-xl flex items-center justify-center text-2xl font-black text-slate-300 group-hover:border-cyan-400 group-hover:text-cyan-600 transition-all duration-300 mb-6">
-                  0{idx + 1}
+                <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span className="relative z-10 text-white transition-colors">Launch Campus Drive</span>
+                <ArrowRight className="w-5 h-5 relative z-10 text-white transition-colors" />
+              </Link>
+            </FadeIn>
+          </div>
+
+          {/* Right Glassmorphic UI */}
+          <div className="w-full lg:w-[50%]">
+            <FadeIn delay={0.4} className="relative z-10">
+              <div className="bg-white/80 backdrop-blur-2xl rounded-3xl border border-slate-200 shadow-2xl overflow-hidden">
+                {/* Header */}
+                <div className="flex items-center justify-between p-4 border-b border-slate-100 bg-slate-50">
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-rose-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
+                  </div>
+                  <div className="text-xs font-mono text-fuchsia-600 flex items-center gap-2">
+                    <Zap className="w-4 h-4" /> LIVE RECRUITMENT FEED
+                  </div>
                 </div>
-                <h3 className="font-bold text-xl text-slate-900 mb-3">{step.title}</h3>
-                <p className="text-slate-500 leading-relaxed px-4">{step.desc}</p>
-              </motion.div>
+
+                {/* Content */}
+                <div className="p-8 grid grid-cols-2 gap-6 relative">
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-fuchsia-100 rounded-full blur-[60px]"></div>
+
+                  {/* Stat Card 1 */}
+                  <div className="bg-white border border-slate-100 shadow-sm rounded-2xl p-6 backdrop-blur-md relative overflow-hidden group hover:border-fuchsia-300 transition-colors">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-fuchsia-50 rounded-bl-full"></div>
+                    <Building2 className="w-8 h-8 text-fuchsia-600 mb-4 relative z-10" />
+                    <p className="text-sm text-slate-500 font-medium tracking-wide mb-1 relative z-10">UNIVERSITIES</p>
+                    <p className="text-4xl font-black text-slate-900 font-display relative z-10">150<span className="text-lg text-fuchsia-600 ml-1">+</span></p>
+                  </div>
+
+                  {/* Stat Card 2 */}
+                  <div className="bg-white border border-slate-100 shadow-sm rounded-2xl p-6 backdrop-blur-md relative overflow-hidden group hover:border-cyan-300 transition-colors">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-50 rounded-bl-full"></div>
+                    <Users className="w-8 h-8 text-cyan-500 mb-4 relative z-10" />
+                    <p className="text-sm text-slate-500 font-medium tracking-wide mb-1 relative z-10">CANDIDATES</p>
+                    <p className="text-4xl font-black text-slate-900 font-display relative z-10">10k<span className="text-lg text-slate-400 font-normal ml-1">/yr</span></p>
+                  </div>
+
+                  {/* Wide Notification Card */}
+                  <div className="col-span-2 bg-gradient-to-r from-fuchsia-50 to-cyan-50 border border-fuchsia-100 rounded-2xl p-6 backdrop-blur-md flex items-center justify-between shadow-sm">
+                    <div>
+                      <p className="text-sm text-fuchsia-600 font-medium tracking-wide mb-1">LATEST OFFER EXTENDED</p>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                        <p className="text-xl font-bold text-slate-900">Software Engineer II</p>
+                      </div>
+                    </div>
+                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center border border-fuchsia-200 shadow-sm">
+                      <Briefcase className="w-5 h-5 text-fuchsia-600" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          2. THE LOGISTICS ENGINE (LIGHT BENTO)
+      ═══════════════════════════════════════════ */}
+      <section className="py-24 bg-slate-50 relative border-y border-slate-200">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
+          <FadeIn className="mb-16">
+            <h2 className="font-display font-black text-4xl text-slate-900 mb-4 tracking-tight">Mastering the Campus Drive</h2>
+            <p className="text-lg text-slate-600 max-w-2xl font-light">
+              Hiring freshers requires massive coordination, automated assessments, and impeccable timing. We handle the logistics so you can focus on making offers.
+            </p>
+          </FadeIn>
+
+          <div className="space-y-32 mt-10">
+            
+            {/* Section 1: Elite University Alliances */}
+            <div className="flex flex-col lg:flex-row items-center gap-16 group">
+              <div className="w-full lg:w-1/2 rounded-[2rem] overflow-hidden shadow-2xl relative border border-slate-200 bg-white">
+                <div className="absolute inset-0 bg-slate-900/5 z-10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                <img src={img1} className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-1000" alt="University Campus" />
+              </div>
+              <div className="w-full lg:w-1/2">
+                <FadeIn>
+                  <div className="w-16 h-16 rounded-2xl bg-fuchsia-50 flex items-center justify-center mb-6">
+                    <Building2 className="w-8 h-8 text-fuchsia-600" />
+                  </div>
+                  <h3 className="font-display font-black text-4xl text-slate-900 mb-6">Elite University Alliances</h3>
+                  <p className="text-xl text-slate-600 leading-relaxed font-light mb-8">
+                    We secure your place at Tier-1 and Tier-2 accredited institutions across major tech hubs. Our deep-rooted relationships with placement cells guarantee priority day-zero slots for your recruitment teams.
+                  </p>
+                  <ul className="space-y-4">
+                    <li className="flex items-center gap-4 text-slate-700 font-medium"><CheckCircle2 className="w-6 h-6 text-emerald-500" /> Pan-India institutional coverage</li>
+                    <li className="flex items-center gap-4 text-slate-700 font-medium"><CheckCircle2 className="w-6 h-6 text-emerald-500" /> Early-access placement negotiation</li>
+                    <li className="flex items-center gap-4 text-slate-700 font-medium"><CheckCircle2 className="w-6 h-6 text-emerald-500" /> Dedicated campus brand ambassadors</li>
+                  </ul>
+                </FadeIn>
+              </div>
+            </div>
+
+            {/* Section 2: High-Velocity Scale */}
+            <div className="flex flex-col lg:flex-row-reverse items-center gap-16 group">
+              <div className="w-full lg:w-1/2 rounded-[2rem] overflow-hidden shadow-2xl relative border border-slate-200 bg-white">
+                <div className="absolute inset-0 bg-slate-900/5 z-10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                <img src={img2} className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-1000" alt="Mass Scheduling" />
+              </div>
+              <div className="w-full lg:w-1/2">
+                <FadeIn>
+                  <div className="w-16 h-16 rounded-2xl bg-cyan-50 flex items-center justify-center mb-6">
+                    <Users className="w-8 h-8 text-cyan-600" />
+                  </div>
+                  <h3 className="font-display font-black text-4xl text-slate-900 mb-6">High-Velocity Scheduling</h3>
+                  <p className="text-xl text-slate-600 leading-relaxed font-light mb-8">
+                    Process thousands of fresher candidates seamlessly in high-velocity weekend drives. We manage the immense logistical burden of mass-communication, venue setup, and crowd control.
+                  </p>
+                  <ul className="space-y-4">
+                    <li className="flex items-center gap-4 text-slate-700 font-medium"><CheckCircle2 className="w-6 h-6 text-cyan-500" /> Automated candidate tracking systems</li>
+                    <li className="flex items-center gap-4 text-slate-700 font-medium"><CheckCircle2 className="w-6 h-6 text-cyan-500" /> Real-time attendance dashboards</li>
+                    <li className="flex items-center gap-4 text-slate-700 font-medium"><CheckCircle2 className="w-6 h-6 text-cyan-500" /> End-to-end physical event management</li>
+                  </ul>
+                </FadeIn>
+              </div>
+            </div>
+
+            {/* Section 3: Automated Screening */}
+            <div className="flex flex-col lg:flex-row items-center gap-16 group">
+              <div className="w-full lg:w-1/2 rounded-[2rem] overflow-hidden shadow-2xl relative border border-slate-200 bg-white">
+                <div className="absolute inset-0 bg-slate-900/5 z-10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                <img src={img3} className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-1000" alt="Automated Screening" />
+              </div>
+              <div className="w-full lg:w-1/2">
+                <FadeIn>
+                  <div className="w-16 h-16 rounded-2xl bg-purple-50 flex items-center justify-center mb-6">
+                    <Target className="w-8 h-8 text-purple-600" />
+                  </div>
+                  <h3 className="font-display font-black text-4xl text-slate-900 mb-6">Precision Screening</h3>
+                  <p className="text-xl text-slate-600 leading-relaxed font-light mb-8">
+                    Filter the top 1% using AI-driven aptitude, logic, and coding tests compiled by DABSLEK experts. We ensure only the most technically sound candidates reach your interview panels.
+                  </p>
+                  <ul className="space-y-4">
+                    <li className="flex items-center gap-4 text-slate-700 font-medium"><CheckCircle2 className="w-6 h-6 text-purple-500" /> Custom role-specific technical assessments</li>
+                    <li className="flex items-center gap-4 text-slate-700 font-medium"><CheckCircle2 className="w-6 h-6 text-purple-500" /> Highly secure proctored online environment</li>
+                    <li className="flex items-center gap-4 text-slate-700 font-medium"><CheckCircle2 className="w-6 h-6 text-purple-500" /> Instant percentile ranking & filtering</li>
+                  </ul>
+                </FadeIn>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          3. PROFESSIONAL PROCESS GRID
+      ═══════════════════════════════════════════ */}
+      <section className="py-32 bg-slate-50 relative border-b border-slate-200">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
+          <FadeIn className="text-center mb-24">
+            <h2 className="font-display font-black text-4xl sm:text-5xl text-slate-900 mb-6 tracking-tight">The Campus Pipeline</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto font-light">
+              A meticulously orchestrated 4-step framework to transition students into corporate assets.
+            </p>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+            {/* Step 1 */}
+            <FadeIn delay={0.1}>
+              <div className="bg-white rounded-2xl p-10 border-t-4 border-fuchsia-500 shadow-xl relative overflow-hidden h-full group hover:-translate-y-2 transition-transform duration-500">
+                <div className="absolute -right-6 -bottom-6 text-[150px] font-display font-black text-slate-50 leading-none select-none z-0 group-hover:text-fuchsia-50 transition-colors duration-500">01</div>
+                <div className="relative z-10">
+                  <Search className="w-10 h-10 text-fuchsia-500 mb-6" />
+                  <h3 className="font-display font-bold text-2xl text-slate-900 mb-4">Sourcing & Scoping</h3>
+                  <p className="text-slate-600 leading-relaxed font-light">
+                    We map and identify accredited institutions matching your exact talent criteria, academic cutoffs, and geographical preferences.
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Step 2 */}
+            <FadeIn delay={0.2}>
+              <div className="bg-white rounded-2xl p-10 border-t-4 border-purple-500 shadow-xl relative overflow-hidden h-full group hover:-translate-y-2 transition-transform duration-500">
+                <div className="absolute -right-6 -bottom-6 text-[150px] font-display font-black text-slate-50 leading-none select-none z-0 group-hover:text-purple-50 transition-colors duration-500">02</div>
+                <div className="relative z-10">
+                  <Calendar className="w-10 h-10 text-purple-500 mb-6" />
+                  <h3 className="font-display font-bold text-2xl text-slate-900 mb-4">Outreach & Dates</h3>
+                  <p className="text-slate-600 leading-relaxed font-light">
+                    We secure prime placement drive dates, coordinating directly with university placement cells to ensure maximum student attendance.
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Step 3 */}
+            <FadeIn delay={0.3}>
+              <div className="bg-white rounded-2xl p-10 border-t-4 border-cyan-500 shadow-xl relative overflow-hidden h-full group hover:-translate-y-2 transition-transform duration-500">
+                <div className="absolute -right-6 -bottom-6 text-[150px] font-display font-black text-slate-50 leading-none select-none z-0 group-hover:text-cyan-50 transition-colors duration-500">03</div>
+                <div className="relative z-10">
+                  <Zap className="w-10 h-10 text-cyan-500 mb-6" />
+                  <h3 className="font-display font-bold text-2xl text-slate-900 mb-4">Pre-Placement</h3>
+                  <p className="text-slate-600 leading-relaxed font-light">
+                    We host massive online webinars to build brand hype, followed by secure, automated online aptitude and technical screenings.
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Step 4 */}
+            <FadeIn delay={0.4}>
+              <div className="bg-white rounded-2xl p-10 border-t-4 border-emerald-500 shadow-xl relative overflow-hidden h-full group hover:-translate-y-2 transition-transform duration-500">
+                <div className="absolute -right-6 -bottom-6 text-[150px] font-display font-black text-slate-50 leading-none select-none z-0 group-hover:text-emerald-50 transition-colors duration-500">04</div>
+                <div className="relative z-10">
+                  <CheckCircle2 className="w-10 h-10 text-emerald-500 mb-6" />
+                  <h3 className="font-display font-bold text-2xl text-slate-900 mb-4">Interviews & Offers</h3>
+                  <p className="text-slate-600 leading-relaxed font-light">
+                    Live, multi-panel interview coordination leading directly to immediate, on-the-spot offer letter generation and candidate lock-in.
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          4. IMMERSIVE CTA SECTION
+      ═══════════════════════════════════════════ */}
+      {/* ═══════════════════════════════════════════
+          4. FAQ SECTION (REPLACED CTA)
+      ═══════════════════════════════════════════ */}
+      <section className="py-32 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-fuchsia-100/50 rounded-full blur-[120px] pointer-events-none"></div>
+        </div>
+
+        <div className="relative z-10 max-w-[800px] mx-auto px-6">
+          <FadeIn className="text-center mb-16">
+            <h2 className="font-display font-black text-4xl sm:text-5xl text-slate-900 mb-6">Frequently Asked Questions</h2>
+            <p className="text-xl text-slate-600 font-light">
+              Everything you need to know about our campus placement drives.
+            </p>
+          </FadeIn>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "Which universities do you partner with?",
+                a: "We have established relationships with over 150+ Tier-1 and Tier-2 engineering, management, and commerce institutions across major tech hubs in India, ensuring a diverse and highly qualified talent pool."
+              },
+              {
+                q: "How do you ensure candidate quality?",
+                a: "Our screening process is rigorous. We use AI-driven proctored assessments covering aptitude, logical reasoning, and role-specific technical skills, compiled by industry experts to filter the top 1% before they even reach your interview panels."
+              },
+              {
+                q: "Can you handle 'Day-Zero' placements?",
+                a: "Yes. Due to our deep-rooted relationships with university placement cells, we regularly secure priority Day-Zero and Day-One slots for our enterprise clients, giving you first access to the brightest minds."
+              },
+              {
+                q: "What is the typical turnaround time for a massive drive?",
+                a: "We can orchestrate a high-velocity weekend drive within 2-3 weeks of finalizing requirements. This includes scoping, university outreach, pre-placement branding webinars, and scheduling."
+              }
+            ].map((faq, index) => (
+              <FadeIn key={index} delay={0.1 * index}>
+                <div 
+                  className={`bg-white border ${openFaq === index ? 'border-fuchsia-400 shadow-md' : 'border-slate-200 hover:border-slate-300 hover:shadow-sm'} rounded-2xl overflow-hidden transition-all duration-300`}
+                >
+                  <button 
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none group"
+                  >
+                    <span className={`font-bold text-lg transition-colors ${openFaq === index ? 'text-fuchsia-600' : 'text-slate-900'}`}>{faq.q}</span>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${openFaq === index ? 'bg-fuchsia-100 text-fuchsia-600' : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200'}`}>
+                      {openFaq === index ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                    </div>
+                  </button>
+                  <AnimatePresence>
+                    {openFaq === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-8 pb-6 text-slate-600 leading-relaxed font-light border-t border-slate-100 pt-4">
+                          {faq.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </FadeIn>
             ))}
           </div>
         </div>

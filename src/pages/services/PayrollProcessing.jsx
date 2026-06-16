@@ -1,7 +1,23 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Calculator, ShieldCheck, FileText, ArrowRight, Wallet, PieChart, CheckCircle, Database } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence, useMotionValue, useTransform, animate } from 'framer-motion';
+import { Calculator, ShieldCheck, FileText, ArrowRight, Wallet, PieChart, CheckCircle, Database, Settings, CheckSquare, CreditCard, BarChart, Target, TrendingUp, Lock, Headphones } from 'lucide-react';
 import { Link } from 'react-router-dom';
+const AnimatedCounter = ({ from, to, duration, delay = 0 }) => {
+  const count = useMotionValue(from);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+  const [displayCount, setDisplayCount] = useState(from);
+
+  useEffect(() => {
+    const controls = animate(count, to, { duration, delay, ease: "easeOut" });
+    const unsubscribe = rounded.on("change", (latest) => setDisplayCount(latest));
+    return () => {
+      controls.stop();
+      unsubscribe();
+    };
+  }, [count, from, to, duration, delay, rounded]);
+
+  return <motion.span className="font-display font-black text-5xl text-white">{displayCount}</motion.span>;
+};
 
 export default function PayrollProcessing() {
   const [activeModule, setActiveModule] = useState(null);
@@ -236,14 +252,137 @@ export default function PayrollProcessing() {
             </div>
             
             <div className="w-full md:w-1/3 relative z-10 flex justify-start md:justify-end">
-              <div className="w-48 h-48 rounded-full border-[8px] border-blue-500/20 flex flex-col items-center justify-center relative">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-48 h-48 rounded-full border-[8px] border-blue-500/20 flex flex-col items-center justify-center relative"
+              >
                 <svg className="absolute inset-0 w-full h-full -rotate-90">
-                  <circle cx="50%" cy="50%" r="46%" fill="transparent" stroke="#3B82F6" strokeWidth="8" strokeDasharray="100 100" strokeLinecap="round" />
+                  <motion.circle 
+                    cx="50%" 
+                    cy="50%" 
+                    r="46%" 
+                    fill="transparent" 
+                    stroke="#3B82F6" 
+                    strokeWidth="8" 
+                    strokeLinecap="round" 
+                    initial={{ pathLength: 0 }}
+                    whileInView={{ pathLength: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
+                  />
                 </svg>
-                <span className="font-display font-black text-5xl text-white">100<span className="text-2xl text-blue-400">%</span></span>
+                <div className="flex items-center">
+                  <AnimatedCounter from={0} to={100} duration={2} delay={0.2} />
+                  <span className="text-2xl text-blue-400 font-display font-black">%</span>
+                </div>
                 <span className="text-xs font-bold tracking-widest text-slate-400 uppercase mt-1">Compliant</span>
-              </div>
+              </motion.div>
             </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          4. HOW IT WORKS (PROCESS)
+      ═══════════════════════════════════════════ */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="font-display font-black text-3xl md:text-4xl text-slate-900 mb-4 tracking-tight">Our Seamless Process</h2>
+            <p className="text-lg text-slate-600">From onboarding to monthly disbursals, our automated workflow ensures a frictionless experience.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+            {/* Connecting line for desktop */}
+            <div className="hidden md:block absolute top-12 left-[12%] right-[12%] h-[2px] bg-slate-200 z-0"></div>
+
+            {[
+              { icon: Settings, title: "1. Data Sync", desc: "Automated integration with your HRMS and attendance systems." },
+              { icon: CheckSquare, title: "2. Validation", desc: "Multi-level checks for leaves, taxes, and statutory deductions." },
+              { icon: CreditCard, title: "3. Disbursal", desc: "One-click bulk salary transfers and compliance payments." },
+              { icon: BarChart, title: "4. Reporting", desc: "Detailed pay slips generation and MIS dashboard updates." }
+            ].map((step, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="relative z-10 flex flex-col items-center text-center"
+              >
+                <div className="w-24 h-24 rounded-full bg-white border border-slate-200 shadow-lg flex items-center justify-center mb-6 text-blue-500">
+                  <step.icon className="w-10 h-10" />
+                </div>
+                <h3 className="font-bold text-xl text-slate-900 mb-2">{step.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed max-w-[250px]">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          5. KEY BENEFITS
+      ═══════════════════════════════════════════ */}
+      <section className="pt-16 pb-48 bg-white border-t border-slate-200">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="font-display font-black text-2xl md:text-4xl text-slate-900 mb-4 tracking-tight">Why Outsource to Us?</h2>
+              <p className="text-base text-slate-600 mb-8 leading-relaxed">
+                Managing payroll in-house drains resources and increases compliance risk. By partnering with us, you unlock enterprise-grade financial operations without the enterprise overhead.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {[
+                  { icon: Target, title: "100% Accuracy", desc: "Zero calculation errors guaranteed by our automated engine." },
+                  { icon: TrendingUp, title: "Cost Efficiency", desc: "Reduce internal HR and IT costs by up to 40%." },
+                  { icon: Lock, title: "Data Security", desc: "Bank-grade encryption protecting sensitive employee data." },
+                  { icon: Headphones, title: "Expert Support", desc: "Dedicated payroll specialists available to resolve queries." }
+                ].map((benefit, idx) => (
+                  <div key={idx} className="flex flex-col gap-2">
+                    <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
+                      <benefit.icon className="w-5 h-5" />
+                    </div>
+                    <h4 className="font-bold text-slate-900 text-base">{benefit.title}</h4>
+                    <p className="text-sm text-slate-600 leading-relaxed">{benefit.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative rounded-3xl overflow-hidden shadow-2xl h-[400px]"
+            >
+              <img src="/payroll_dashboard.jpg" alt="Payroll Dashboard" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128] via-transparent to-transparent"></div>
+              
+              <div className="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl">
+                <div className="flex items-center gap-4 text-white">
+                  <div className="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
+                    <CheckCircle className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-base">Audit Ready Always</h4>
+                    <p className="text-xs text-slate-200">Our reports maintain a continuous state of audit readiness.</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
           </div>
         </div>

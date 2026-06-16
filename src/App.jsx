@@ -28,7 +28,7 @@ export default function App() {
         <Navbar />
 
         {/* Main Content Area */}
-        <main className="pb-36">
+        <main className="">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

@@ -619,7 +619,7 @@ export default function Contact() {
       {/* ═══════════════════════════════════════════
           FAQ SECTION
       ═══════════════════════════════════════════ */}
-      <section className="py-20 bg-white">
+      <section className="pt-20 pb-48 bg-white">
         <div className="max-w-3xl mx-auto px-6 lg:px-0">
           <FadeIn className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-pill border border-brand-indigo/15 text-brand-indigo font-semibold text-xs tracking-wide mb-4">

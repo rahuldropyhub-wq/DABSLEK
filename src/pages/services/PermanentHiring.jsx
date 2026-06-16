@@ -430,7 +430,7 @@ export default function PermanentHiring() {
       </section>
 
       {/* 5. FAQS SECTION */}
-      <section className="py-24 px-6 lg:px-16 max-w-4xl mx-auto">
+      <section className="pt-24 pb-48 px-6 lg:px-16 max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="font-display font-extrabold text-4xl md:text-5xl text-slate-900 mb-6">Frequently Asked Questions</h2>
         </div>

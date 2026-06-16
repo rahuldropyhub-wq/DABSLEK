@@ -1062,7 +1062,7 @@ export default function Home() {
       </section>
 
       {/* ❓ SECTION 13 – FREQUENTLY ASKED QUESTIONS */}
-      <section id="faq" className="relative z-10 w-full max-w-[1000px] mx-auto px-6 lg:px-12 pt-16 pb-12 border-t border-brand-border/40">
+      <section id="faq" className="relative z-10 w-full max-w-[1000px] mx-auto px-6 lg:px-12 pt-16 pb-48 border-t border-brand-border/40">
         <div className="text-center mb-16">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-pill border border-brand-indigo/10 text-brand-indigo font-semibold text-xs tracking-wider uppercase mb-4">
             Got Questions?

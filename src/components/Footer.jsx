@@ -50,7 +50,7 @@ export default function Footer() {
 
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-12">
         {/* Floating CTA card on top */}
-        <div className="relative -mt-58 mb-16 p-8 md:p-12 rounded-[32px] bg-gradient-to-r from-brand-indigo/90 via-brand-violet/90 to-purple-900/90 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(99,102,241,0.2)] overflow-hidden">
+        <div className="relative -mt-48 mb-16 p-8 md:p-12 rounded-[32px] bg-gradient-to-r from-brand-indigo/90 via-brand-violet/90 to-purple-900/90 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(99,102,241,0.2)] overflow-hidden">
           <div className="absolute inset-0 opacity-20 pointer-events-none">
             <img src={footerBg} alt="CTA BG" className="w-full h-full object-cover" />
           </div>
