@@ -11,6 +11,22 @@ import {
 } from 'lucide-react';
 import Hero from '../components/Hero';
 import aboutCollaboration from '../assets/about-collaboration.png';
+import permanentHiringCard from '../assets/permanent-hiring-card.jpg';
+import contractHiringCard from '../assets/contract-hiring-card.jpg';
+import rpoCard from '../assets/rpo-card.jpg';
+import payrollProcessingCard from '../assets/payroll-processing-card.jpg';
+import deliveryExecutiveCard from '../assets/delivery-executive-card.jpg';
+import collegePlacementsCard from '../assets/college-placements-card.jpg';
+import itServicesBg from '../assets/it-services-bg.jpg';
+import bfsiBg from '../assets/bfsi-bg.jpg';
+import pharmaBg from '../assets/pharma-bg.jpg';
+import mediaBg from '../assets/media-bg.jpg';
+import telecomBg from '../assets/telecom-bg.jpg';
+import ecommerceBg from '../assets/ecommerce-bg.jpg';
+import logisticsBg from '../assets/logistics-bg.jpg';
+import quickCommerceBg from '../assets/quick-commerce-bg.jpg';
+import edtechBg from '../assets/edtech-bg.jpg';
+import manufacturingBg from '../assets/manufacturing-bg.jpg';
 
 // Self-contained Animated Counter component for scrolling stats
 function AnimatedCounter({ value }) {
@@ -333,7 +349,7 @@ export default function Home() {
               desc: "Identify, pre-evaluate, and secure executive-level candidates built for long-term strategic alignment.",
               path: "/services/permanent-hiring",
               icon: UserRound,
-              image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+              image: permanentHiringCard,
               features: ["90-Day Replacement Guarantee", "Executive Sourcing Integrity", "Multi-stage Technical Vetting", "100% Background Verifications"]
             },
             {
@@ -341,7 +357,7 @@ export default function Home() {
               desc: "Add immediate technical or general workforce capacity through flexible billing and contracting structures.",
               path: "/services/contract-hiring",
               icon: ClipboardCheck,
-              image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80",
+              image: contractHiringCard,
               features: ["Rapid Onboarding Tracks", "Flexible Billing Models", "Scale Operations Instantly", "Full SLA & Compliance Vetting"]
             },
             {
@@ -349,7 +365,7 @@ export default function Home() {
               desc: "Transfer your entire recruiting operations to us—from job profiles to screening, tracking, and final offers.",
               path: "/services/rpo",
               icon: Sliders,
-              image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80",
+              image: rpoCard,
               features: ["Dedicated Recruitment Squads", "Advanced ATS Integrations", "Optimized Cost Per Hire", "Transparent Pipeline Metrics"]
             },
             {
@@ -357,7 +373,7 @@ export default function Home() {
               desc: "Offload compliance administration, employee payouts, taxes, PF/ESI management, and custom reporting.",
               path: "/services/payroll-processing",
               icon: Scale,
-              image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80",
+              image: payrollProcessingCard,
               features: ["Automated Disbursements", "Full PF/ESI Compliance", "Regional Tax Declarations", "Employee Helpdesk Support"]
             },
             {
@@ -365,7 +381,7 @@ export default function Home() {
               desc: "Rapid bulk-sourcing and onboarding of operations specialists, field staff, and logistics fleets.",
               path: "/services/delivery-executive-hiring",
               icon: Truck,
-              image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+              image: deliveryExecutiveCard,
               features: ["High-volume gig sourcing", "Instant geo-onboarding", "Document authenticity checks", "Fleet operations managers"]
             },
             {
@@ -373,7 +389,7 @@ export default function Home() {
               desc: "Coordinate placements with Tier-1 and Tier-2 institutes across India to source top fresh graduate talent.",
               path: "/services/college-placements",
               icon: GraduationCap,
-              image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80",
+              image: collegePlacementsCard,
               features: ["Direct placement liaison", "Custom aptitude screenings", "Scalable freshers hiring", "Statewide college outreach"]
             }
           ].map((service, idx) => {
@@ -398,16 +414,16 @@ export default function Home() {
                 />
 
                 {/* Default Gradient Overlay (Covering bottom portion, expanding on hover/focus with backdrop blur) */}
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-brand-dark/50 to-transparent group-hover:bg-brand-dark/85 group-hover:backdrop-blur-sm group-focus:bg-brand-dark/85 group-focus:backdrop-blur-sm transition-all duration-500 z-10 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/30 to-transparent group-hover:bg-brand-dark/90 group-hover:backdrop-blur-sm group-focus:bg-brand-dark/90 group-focus:backdrop-blur-sm transition-all duration-500 z-10 pointer-events-none" />
 
                 {/* Content Container */}
-                <div className="absolute inset-0 p-6 z-20 flex flex-col justify-between text-white text-left h-full">
+                <div className="absolute inset-0 p-6 z-20 flex flex-col justify-end text-white text-left h-full">
                   {/* Top Bar (Icon + Title) */}
-                  <div>
-                    <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md text-white w-fit mb-4 group-hover:bg-brand-indigo transition-colors duration-300">
-                      <Icon className="w-5 h-5" />
+                  <div className="mb-3">
+                    <div className="p-3.5 rounded-2xl bg-white/20 backdrop-blur-md text-white w-fit mb-4 group-hover:bg-brand-indigo shadow-lg transition-colors duration-300">
+                      <Icon className="w-5 h-5 drop-shadow-md" />
                     </div>
-                    <h3 className="font-display font-extrabold text-xl transition-all duration-300">
+                    <h3 className="font-display font-extrabold text-xl transition-all duration-300 drop-shadow-lg text-white">
                       {service.title}
                     </h3>
                   </div>
@@ -458,70 +474,70 @@ export default function Home() {
                 title: "IT Services & Software",
                 icon: Code,
                 desc: "Powering tech giants and fast-growing SaaS startups with elite software developers, devops leads, and systems engineers.",
-                image: "/it-services.jpg",
+                image: itServicesBg,
                 points: ["Fullstack Developers", "Cloud & DevOps Architects", "Data Scientists & ML Leads", "Cybersecurity Engineers"]
               },
               {
                 title: "BFSI & FinTech",
                 icon: Landmark,
                 desc: "Sourcing elite financial analysts, risk managers, tax professionals, and chartered accountants for leading firms.",
-                image: "/bfsi.jpg",
+                image: bfsiBg,
                 points: ["Investment Advisors", "Financial Risk Analysts", "Chartered Accountants", "Regulatory Compliance Officers"]
               },
               {
                 title: "Pharma & Healthcare",
                 icon: HeartPulse,
                 desc: "Bridging clinical research and healthcare delivery with verified laboratory scientists, nurses, and operational leads.",
-                image: "/pharma_healthcare.png",
+                image: pharmaBg,
                 points: ["Certified Lab Technicians", "Senior Nursing Staff", "Clinical Trial Coordinators", "Medical Sales Representatives"]
               },
               {
                 title: "Media & Marketing",
                 icon: Megaphone,
                 desc: "Placing creative innovators and digital campaign specialists who drive brand growth and campaign success.",
-                image: "/media_marketing.png",
+                image: mediaBg,
                 points: ["Creative & Art Directors", "Paid Media Managers", "Senior UI/UX Designers", "Digital Growth Strategists"]
               },
               {
                 title: "Telecommunications",
                 icon: Radio,
                 desc: "Connecting telecom network infrastructure leaders with RF planning engineers and field installation supervisors.",
-                image: "/telecommunications.png",
+                image: telecomBg,
                 points: ["RF Planning Engineers", "Fiber Network Technicians", "Field Deployment Managers", "NOC Operations Specialists"]
               },
               {
                 title: "E-commerce & Retail",
                 icon: ShoppingBag,
                 desc: "Category managers, merchandising analysts, and store operations coordinators.",
-                image: "/ecommerce_retail.png",
+                image: ecommerceBg,
                 points: ["Category Growth Leads", "Digital Merchants", "Retail Store Directors", "Inventory Analysts"]
               },
               {
                 title: "Logistics & Supply Chain",
                 icon: Truck,
                 desc: "Optimizing warehouse operations and transport logistics with experienced supervisors and inventory planners.",
-                image: "/logistics_supply.png",
+                image: logisticsBg,
                 points: ["Supply Chain Leads", "Warehouse Supervisors", "Fleet Coordinators", "Inventory Planners"]
               },
               {
                 title: "Quick Commerce & Delivery",
                 icon: Bike,
                 desc: "Managing high-volume fleet recruitment, gig workers onboarding, and fulfillment operations.",
-                image: "/quick_commerce.png",
+                image: quickCommerceBg,
                 points: ["Gig Delivery Fleets Sourced", "Compliance Onboarding Leads", "Fulfillment Hub Managers", "Last-Mile Delivery Leads"]
               },
               {
                 title: "Education & EdTech",
                 icon: GraduationCap,
                 desc: "Connecting institutes and training academies with aptitude coordinators and corporate placement advisor teams.",
-                image: "/education_edtech.png",
+                image: edtechBg,
                 points: ["Placement Directors", "Technical Aptitude Trainers", "Career Advisors", "Institutional Liaisons"]
               },
               {
                 title: "Manufacturing & Heavy Industries",
                 icon: Factory,
                 desc: "Ensuring industrial safety compliance, plant supervisors excellence, and mechanical inspectors.",
-                image: "/manufacturing.png",
+                image: manufacturingBg,
                 points: ["Plant Operations Supervisors", "EH&S Compliance Leads", "Quality Control Inspectors", "Precision Machine Operators"]
               }
             ].map((ind, idx) => {
@@ -536,13 +552,13 @@ export default function Home() {
                   className="absolute inset-0 w-full h-full flex flex-col justify-center pt-24 pb-16"
                 >
                   {/* Full-bleed Background Image with Dark Overlay */}
-                  <div className="absolute inset-0 z-0">
+                  <div className="absolute inset-0 z-0 bg-[#090D16]">
                     <img
                       src={ind.image}
                       alt={ind.title}
-                      className="w-full h-full object-cover filter brightness-[0.48] contrast-[1.05]"
+                      className="w-full h-full object-cover filter brightness-[0.8] contrast-[1.05]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#090D16] via-[#090D16]/85 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#090D16] via-[#090D16]/60 to-transparent" />
                   </div>
 
                   {/* Content Container */}
