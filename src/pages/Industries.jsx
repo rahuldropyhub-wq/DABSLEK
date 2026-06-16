@@ -207,7 +207,7 @@ export default function Industries() {
             </h1>
 
             <p className="text-white/70 text-lg lg:text-xl leading-relaxed mb-10 max-w-2xl">
-              DABSLEK deploys specialized recruitment teams across 10+ industries — with sector-specific recruiters who understand the language of your domain.
+              DABSLEK deploys specialized recruitment teams across 10+ industries - with sector-specific recruiters who understand the language of your domain.
             </p>
           </motion.div>
 
@@ -324,7 +324,7 @@ export default function Industries() {
                 </span>
               </h2>
               <p className="text-brand-muted text-base lg:text-[17px] leading-relaxed mb-8">
-                Generic recruiters fill seats. We fill strategic positions. Our industry-aligned teams understand role-specific benchmarks, technical vocabularies, and sector nuances — delivering candidates who truly fit.
+                Generic recruiters fill seats. We fill strategic positions. Our industry-aligned teams understand role-specific benchmarks, technical vocabularies, and sector nuances - delivering candidates who truly fit.
               </p>
               <div className="flex flex-col gap-4">
                 {[

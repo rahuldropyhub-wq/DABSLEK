@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     q: 'Do you manage payroll for contract staff?',
-    a: 'Yes — our Payroll Processing service covers PF, ESI, Professional Tax, and complete compliance management for all contract employees.',
+    a: 'Yes - our Payroll Processing service covers PF, ESI, Professional Tax, and complete compliance management for all contract employees.',
   },
 ];
 
@@ -128,7 +128,7 @@ export default function Contact() {
       icon: MapPin,
       label: 'Headquarters',
       value: 'Hyderabad, Telangana',
-      sub: 'India — Pan-India operations',
+      sub: 'India - Pan-India operations',
       href: 'https://maps.google.com/?q=Hyderabad,Telangana',
       gradient: 'from-rose-500 to-pink-500',
     },
@@ -153,7 +153,7 @@ export default function Contact() {
     <div className="bg-white min-h-screen overflow-hidden">
 
       {/* ═══════════════════════════════════════════
-          HERO SECTION — Full-bleed with image + overlay content
+          HERO SECTION - Full-bleed with image + overlay content
       ═══════════════════════════════════════════ */}
       <section className="relative w-full min-h-[92vh] flex items-end overflow-hidden">
         {/* Background */}
@@ -192,7 +192,7 @@ export default function Contact() {
               </span>
             </h1>
             <p className="font-sans text-white/70 text-lg lg:text-xl leading-relaxed mb-10 max-w-2xl">
-              Whether you're scaling a team or seeking your next opportunity — DABSLEK's experts are one message away.
+              Whether you're scaling a team or seeking your next opportunity - DABSLEK's experts are one message away.
             </p>
           </motion.div>
 

@@ -8,7 +8,7 @@ import {
 import { Link } from 'react-router-dom';
 import aboutHeroTeam from '../assets/about-hero-team.png';
 import aboutTeamCollab from '../assets/about-team-collab.png';
-import aboutCollaboration from '../assets/about-collaboration.png';
+
 
 /* ─── Animated Counter ──────────────────────────────────────────── */
 function AnimatedCounter({ value }) {
@@ -81,7 +81,7 @@ export default function About() {
     {
       icon: ShieldCheck,
       title: 'Replacement Policy',
-      description: 'We stand behind every placement with a structured replacement guarantee within a defined period — zero compromise on quality.',
+      description: 'We stand behind every placement with a structured replacement guarantee within a defined period - zero compromise on quality.',
       color: 'from-blue-500 to-brand-indigo',
     },
     {
@@ -93,7 +93,7 @@ export default function About() {
     {
       icon: Users,
       title: 'Dedicated Account Manager',
-      description: 'A single point of contact drives your entire hiring cycle — no handoffs, no delays, just focused execution.',
+      description: 'A single point of contact drives your entire hiring cycle - no handoffs, no delays, just focused execution.',
       color: 'from-brand-violet to-purple-400',
     },
     {
@@ -105,13 +105,13 @@ export default function About() {
     {
       icon: Heart,
       title: 'Candidate Care',
-      description: 'We treat candidates as future colleagues, not just profiles — ensuring a positive experience that reflects on your brand.',
+      description: 'We treat candidates as future colleagues, not just profiles - ensuring a positive experience that reflects on your brand.',
       color: 'from-pink-500 to-rose-400',
     },
     {
       icon: TrendingUp,
       title: 'Scalable at Speed',
-      description: 'From 1 hire to 1,000 — our infrastructure scales without compromising on screening quality or turnaround time.',
+      description: 'From 1 hire to 1,000 - our infrastructure scales without compromising on screening quality or turnaround time.',
       color: 'from-rose-400 to-orange-400',
     },
   ];
@@ -156,19 +156,19 @@ export default function About() {
     <div className="relative bg-white min-h-screen overflow-hidden">
 
       {/* ══════════════════════════════════════════════════════════
-          HERO SECTION — Full-bleed with image + overlay content
+          HERO SECTION - Full-bleed with image + overlay content
       ══════════════════════════════════════════════════════════ */}
       <section className="relative w-full min-h-[92vh] flex items-end overflow-hidden">
         {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 bg-[#0F172A]">
           <img
             src={aboutHeroTeam}
             alt="DABSLEK team in office"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center filter brightness-[0.9]"
           />
           {/* Multi-layer overlay for readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/70 to-[#0F172A]/30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-[#0F172A]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/70 via-[#0F172A]/20 to-transparent" />
         </div>
 
         {/* Floating badge top-right */}
@@ -205,7 +205,7 @@ export default function About() {
             </h1>
 
             <p className="font-sans text-white/75 text-lg lg:text-xl leading-relaxed mb-10 max-w-2xl">
-              DABSLEK is a Hyderabad-based staffing powerhouse delivering end-to-end IT and Non-IT recruitment across industries — where technology meets human expertise.
+              DABSLEK is a Hyderabad-based staffing powerhouse delivering end-to-end IT and Non-IT recruitment across industries - where technology meets human expertise.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -264,13 +264,13 @@ export default function About() {
                   className="w-full h-[480px] object-cover object-center"
                 />
                 {/* Floating card */}
-                <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-white/95 backdrop-blur-sm border border-brand-border/40 shadow-lg flex items-center gap-4">
+                <div className="absolute bottom-6 left-6 pr-8 p-5 rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/10 shadow-xl flex items-center gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-indigo to-brand-violet flex items-center justify-center flex-shrink-0">
                     <CheckCircle className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-display font-bold text-sm text-brand-dark">95%+ Offer Acceptance Rate</p>
-                    <p className="text-xs text-brand-muted mt-0.5">Across all client engagements in 2024–25</p>
+                    <p className="font-display font-bold text-sm text-white">95%+ Offer Acceptance Rate</p>
+                    <p className="text-xs text-white/70 mt-0.5">Across all client engagements in 2024–25</p>
                   </div>
                 </div>
               </div>
@@ -292,10 +292,10 @@ export default function About() {
                 </span>
               </h2>
               <p className="text-brand-muted text-base lg:text-[17px] leading-relaxed mb-8">
-                Founded in 2020 in Hyderabad, DABSLEK was built with a simple belief: great hiring is a combination of intelligent systems and experienced recruiters. We don't choose one over the other — we run both in parallel to deliver faster, sharper, and more reliable talent outcomes.
+                Founded in 2020 in Hyderabad, DABSLEK was built with a simple belief: great hiring is a combination of intelligent systems and experienced recruiters. We don't choose one over the other - we run both in parallel to deliver faster, sharper, and more reliable talent outcomes.
               </p>
               <p className="text-brand-muted text-base leading-relaxed mb-10">
-                Today, we serve 50+ corporates across IT, manufacturing, logistics, healthcare, and BFSI sectors — from startups to Fortune 500 companies. Our proven dual-sourcing framework screens at scale while preserving the human judgment that machines cannot replicate.
+                Today, we serve 50+ corporates across IT, manufacturing, logistics, healthcare, and BFSI sectors - from startups to Fortune 500 companies. Our proven dual-sourcing framework screens at scale while preserving the human judgment that machines cannot replicate.
               </p>
 
               {/* Why Us Checklist */}
@@ -315,70 +315,68 @@ export default function About() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          MISSION & VISION SECTION — Dark gradient band
+          MISSION & VISION SECTION - Dark gradient band
       ══════════════════════════════════════════════════════════ */}
-      <section className="py-20 bg-gradient-to-br from-[#0F172A] via-[#1E1B4B] to-[#0F172A] relative overflow-hidden">
+      <section className="py-24 bg-[#0B0F19] relative overflow-hidden">
+        {/* Advanced Background Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)] pointer-events-none" />
+        
         {/* Decorative glows */}
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-brand-indigo/10 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-brand-violet/10 blur-[100px] pointer-events-none" />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-brand-indigo/10 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full bg-brand-violet/10 blur-[100px] pointer-events-none" />
 
         <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-16">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <FadeIn>
               <SectionBadge icon={Lightbulb} label="Mission & Vision" />
-              <h2 className="font-display font-extrabold text-4xl lg:text-5xl text-white leading-tight tracking-tight mt-4">
+              <h2 className="font-display font-extrabold text-4xl lg:text-5xl xl:text-6xl text-white leading-tight tracking-tight mt-6">
                 Why We Do What We Do
               </h2>
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             {/* Mission */}
             <FadeIn delay={0.1} direction="left">
-              <div className="p-8 lg:p-10 rounded-[28px] bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/8 transition-all duration-300 h-full">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-indigo to-brand-violet flex items-center justify-center mb-6">
-                  <Target className="w-6 h-6 text-white" />
+              <div className="group relative p-10 lg:p-14 rounded-[32px] bg-white/[0.02] border border-white/10 backdrop-blur-xl overflow-hidden hover:bg-white/[0.04] transition-all duration-500 hover:border-white/20 hover:shadow-[0_0_50px_rgba(99,102,241,0.1)] h-full">
+                <div className="absolute top-0 right-0 w-[250px] h-[250px] bg-brand-indigo/20 rounded-full blur-[100px] -mr-20 -mt-20 group-hover:bg-brand-indigo/30 transition-all duration-700 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-40 h-40 bg-white/5 rounded-full blur-[60px] group-hover:bg-white/10 transition-all duration-700 pointer-events-none" />
+                
+                <div className="relative z-10">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-8">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-indigo to-brand-violet flex items-center justify-center flex-shrink-0 shadow-[0_0_30px_rgba(99,102,241,0.3)] group-hover:scale-110 group-hover:shadow-[0_0_40px_rgba(99,102,241,0.5)] transition-all duration-500">
+                      <Target className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="font-display font-black text-3xl lg:text-4xl text-white tracking-tight">Our Mission</h3>
+                  </div>
+                  <p className="text-white/70 text-lg lg:text-xl leading-relaxed font-sans font-light">
+                    To optimize client operational capacity by delivering pre-screened, high-velocity human resources that align with strategic long-term goals - at every level of the organizational pyramid.
+                  </p>
                 </div>
-                <h3 className="font-display font-black text-2xl text-white mb-4">Our Mission</h3>
-                <p className="text-white/65 text-base leading-relaxed">
-                  To optimize client operational capacity by delivering pre-screened, high-velocity human resources that align with strategic long-term goals — at every level of the organizational pyramid.
-                </p>
               </div>
             </FadeIn>
 
             {/* Vision */}
             <FadeIn delay={0.2} direction="right">
-              <div className="p-8 lg:p-10 rounded-[28px] bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/8 transition-all duration-300 h-full">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-violet to-purple-400 flex items-center justify-center mb-6">
-                  <Globe className="w-6 h-6 text-white" />
+              <div className="group relative p-10 lg:p-14 rounded-[32px] bg-white/[0.02] border border-white/10 backdrop-blur-xl overflow-hidden hover:bg-white/[0.04] transition-all duration-500 hover:border-white/20 hover:shadow-[0_0_50px_rgba(168,85,247,0.1)] h-full">
+                <div className="absolute top-0 right-0 w-[250px] h-[250px] bg-brand-violet/20 rounded-full blur-[100px] -mr-20 -mt-20 group-hover:bg-brand-violet/30 transition-all duration-700 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-40 h-40 bg-white/5 rounded-full blur-[60px] group-hover:bg-white/10 transition-all duration-700 pointer-events-none" />
+                
+                <div className="relative z-10">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-8">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-violet to-purple-400 flex items-center justify-center flex-shrink-0 shadow-[0_0_30px_rgba(168,85,247,0.3)] group-hover:scale-110 group-hover:shadow-[0_0_40px_rgba(168,85,247,0.5)] transition-all duration-500">
+                      <Globe className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="font-display font-black text-3xl lg:text-4xl text-white tracking-tight">Our Vision</h3>
+                  </div>
+                  <p className="text-white/70 text-lg lg:text-xl leading-relaxed font-sans font-light">
+                    To become India's most reliable talent architecture firm - setting global benchmarks in compliance-driven recruitment automation, workforce retention, and client success outcomes.
+                  </p>
                 </div>
-                <h3 className="font-display font-black text-2xl text-white mb-4">Our Vision</h3>
-                <p className="text-white/65 text-base leading-relaxed">
-                  To become India's most reliable talent architecture firm — setting global benchmarks in compliance-driven recruitment automation, workforce retention, and client success outcomes.
-                </p>
               </div>
             </FadeIn>
           </div>
 
-          {/* Big image inside dark section */}
-          <FadeIn delay={0.15}>
-            <div className="relative rounded-[28px] overflow-hidden shadow-2xl shadow-black/50">
-              <img
-                src={aboutCollaboration}
-                alt="DABSLEK collaboration and culture"
-                className="w-full h-[340px] lg:h-[420px] object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/70 via-transparent to-[#0F172A]/70" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center px-6">
-                  <p className="font-display font-black text-3xl lg:text-5xl text-white leading-tight max-w-2xl mx-auto">
-                    "People are the only competitive advantage that can't be copied."
-                  </p>
-                  <p className="text-white/50 text-sm mt-4 font-sans">— The DABSLEK Philosophy</p>
-                </div>
-              </div>
-            </div>
-          </FadeIn>
         </div>
       </section>
 

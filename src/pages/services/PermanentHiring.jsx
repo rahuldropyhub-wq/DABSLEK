@@ -3,8 +3,15 @@ import { motion, useScroll, useTransform, useSpring, useMotionValue, useMotionTe
 import { Sparkles, ArrowRight, ShieldCheck, Target, Users, Zap, Briefcase, Award, CheckCircle2, Star, TrendingUp, Shield, Handshake, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import permanentHeroImg from '../../assets/Permanent_Hero.png';
+import permanentHeroImg from '../../assets/permanent-hiring-card.jpg';
 import statsImg from '../../assets/about-stats-visual.png';
+import fasterHiringImg from '../../assets/faster-hiring.webp';
+import smartTalentImg from '../../assets/smart-talent.webp';
+import futureProofImg from '../../assets/future-proof.webp';
+import permanentItStaffingImg from '../../assets/permanent-it-staffing.jpg';
+import execLeadershipImg from '../../assets/executive-leadership.jpg';
+import talentAdvisoryImg from '../../assets/talent-advisory.jpg';
+import whenToChooseImg from '../../assets/when-to-choose.jpg';
 
 // ─── 3D TILT CARD COMPONENT ──────────────────────────────────────────────────
 const TiltCard = ({ children, className = "" }) => {
@@ -118,33 +125,36 @@ const StackedServices = () => {
       title: "Permanent IT Staffing", 
       subtitle: "Curated by AI to match evolving tech stacks.",
       desc: "Find IT professionals who not only fit today’s needs but can grow with tomorrow’s technologies. Faster, smarter matches across software, cloud, data, AI/ML, and cybersecurity.", 
-      img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200",
+      img: permanentItStaffingImg,
       color: "from-blue-50 to-indigo-50" 
     },
     { 
       title: "Executive & Leadership Hiring", 
       subtitle: "Strategic roles with cultural alignment.",
       desc: "Hire leaders who drive transformation. We combine AI insights with human expertise to deliver executives aligned with your culture, strategy, and long-term goals.", 
-      img: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1200",
+      img: execLeadershipImg,
       color: "from-indigo-50 to-purple-50" 
     },
     { 
       title: "Customized Talent Advisory", 
       subtitle: "From workforce planning to succession.",
       desc: "Beyond filling roles, we help you design a future-ready workforce with advisory on hiring frameworks, talent trends, and succession planning.", 
-      img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1200",
+      img: talentAdvisoryImg,
       color: "from-purple-50 to-pink-50" 
     },
   ];
 
   return (
-    <section className="py-24 px-6 lg:px-16 max-w-[1440px] mx-auto relative z-10 bg-white">
-      <div className="text-center mb-16 max-w-4xl mx-auto">
-        <h2 className="font-display font-extrabold text-4xl md:text-5xl text-slate-900 mb-6">Our Permanent Hiring Services</h2>
-        <p className="text-lg md:text-xl text-slate-600">Tailored solutions to build your core team.</p>
+    <section className="py-32 px-6 lg:px-16 w-full relative z-10 bg-[#0B0F19] overflow-hidden">
+      {/* Decorative Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_0%,#000_20%,transparent_100%)] pointer-events-none" />
+      
+      <div className="text-center mb-20 relative z-10 max-w-4xl mx-auto">
+        <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl text-white mb-6 tracking-tight">Our Permanent Hiring Services</h2>
+        <p className="text-lg md:text-xl text-white/60 font-light tracking-wide">Tailored, high-velocity solutions to build your core team.</p>
       </div>
       
-      <div className="flex flex-col gap-24 md:gap-32 w-full mx-auto pb-32">
+      <div className="flex flex-col gap-10 w-full max-w-[1200px] mx-auto pb-32 relative z-10">
         {services.map((service, idx) => (
           <motion.div 
             key={idx}
@@ -152,15 +162,32 @@ const StackedServices = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className={`overflow-hidden rounded-[3rem] shadow-xl border border-slate-100 flex flex-col ${idx % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} items-stretch bg-white`}
+            className="sticky group/card flex flex-col lg:flex-row items-center gap-10 overflow-hidden rounded-[2rem] border border-white/10 bg-[#131A2A] p-6 md:p-10 lg:p-12 shadow-[0_30px_60px_rgba(0,0,0,0.8)] hover:shadow-[0_0_100px_rgba(99,102,241,0.25)] hover:border-indigo-500/40 hover:-translate-y-2 transition-all duration-700 ease-out z-10 hover:z-20"
+            style={{ top: `calc(120px + ${idx * 30}px)` }}
           >
-            <div className={`w-full md:w-1/2 p-10 md:p-20 flex flex-col justify-center bg-gradient-to-br ${service.color}`}>
-              <h4 className="text-indigo-600 font-bold text-sm md:text-base tracking-widest uppercase mb-4">{service.subtitle}</h4>
-              <h3 className="font-display font-black text-3xl md:text-5xl text-slate-900 mb-6 leading-tight">{service.title}</h3>
-              <p className="font-sans text-slate-600 text-lg md:text-xl leading-relaxed">{service.desc}</p>
+            {/* Text Content */}
+            <div className="w-full lg:w-5/12 flex flex-col justify-center relative">
+              {/* Inner Glow */}
+              <div className="absolute top-0 left-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none group-hover/card:bg-indigo-500/30 transition-colors duration-700" />
+              
+              <div className="flex items-center gap-4 mb-6 relative z-10">
+                <div className="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30 shrink-0 group-hover/card:bg-indigo-600 group-hover/card:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all duration-500">
+                  <span className="text-indigo-400 font-bold text-sm group-hover/card:text-white transition-colors duration-500">0{idx + 1}</span>
+                </div>
+                <h4 className="text-indigo-400 font-bold text-sm tracking-widest uppercase">{service.subtitle}</h4>
+              </div>
+              
+              <h3 className="font-display font-black text-3xl md:text-4xl text-white mb-6 leading-tight relative z-10 group-hover/card:text-transparent group-hover/card:bg-clip-text group-hover/card:bg-gradient-to-r group-hover/card:from-white group-hover/card:to-indigo-200 transition-all duration-500">{service.title}</h3>
+              <p className="font-sans text-white/60 text-lg leading-relaxed relative z-10 group-hover/card:text-white/80 transition-colors duration-500">{service.desc}</p>
             </div>
-            <div className="w-full md:w-1/2 h-[400px] md:h-auto min-h-[500px] relative overflow-hidden">
-              <img src={service.img} alt={service.title} className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
+            
+            {/* Image Container - Full image visible */}
+            <div className="w-full lg:w-7/12 relative rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-white/5 bg-black group-hover/card:shadow-[0_0_60px_rgba(99,102,241,0.3)] group-hover/card:border-indigo-500/20 transition-all duration-700">
+              <img 
+                src={service.img} 
+                alt={service.title} 
+                className="w-full h-auto object-contain transition-transform duration-1000 group-hover/card:scale-[1.03]" 
+              />
             </div>
           </motion.div>
         ))}
@@ -209,7 +236,7 @@ export default function PermanentHiring() {
     <div className="bg-white min-h-screen overflow-x-hidden text-slate-900 selection:bg-indigo-500 selection:text-white">
 
       {/* 1. NEW TWO-COLUMN HERO SECTION */}
-      <section className="relative pt-32 pb-48 overflow-visible bg-gradient-to-b from-indigo-50/30 to-white">
+      <section className="relative pt-32 pb-12 overflow-visible bg-gradient-to-b from-indigo-50/30 to-white">
         <FloatingParticles />
         <div className="max-w-[1440px] mx-auto px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
           
@@ -293,9 +320,9 @@ export default function PermanentHiring() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="bg-white rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.05)] border border-slate-100 p-8 md:p-12"
+            className="bg-white rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.06)] border border-slate-100 p-4 md:p-6 lg:p-8"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-6 divide-y sm:divide-y-0 lg:divide-x divide-slate-100">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
               {[
                 { icon: Target, title: "Right Fit", desc: "We match the right talent with your job requirements." },
                 { icon: Star, title: "Quality Talent", desc: "Access to skilled and pre-vetted professionals." },
@@ -303,12 +330,15 @@ export default function PermanentHiring() {
                 { icon: Shield, title: "Retention Focused", desc: "We hire professionals who stay and grow." },
                 { icon: Handshake, title: "End-to-End Support", desc: "From sourcing to onboarding, we've got you covered." }
               ].map((feature, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center px-4 pt-8 sm:pt-0">
-                  <div className="w-16 h-16 rounded-full border-2 border-indigo-50 bg-white shadow-sm flex items-center justify-center mb-6">
-                    <feature.icon className="w-8 h-8 text-indigo-600" strokeWidth={1.5} />
+                <div 
+                  key={idx} 
+                  className="group relative flex flex-col items-center text-center p-4 sm:p-5 rounded-2xl hover:bg-slate-50 hover:shadow-[0_10px_20px_rgba(99,102,241,0.06)] border border-transparent hover:border-indigo-100 hover:-translate-y-1 transition-all duration-400 cursor-pointer"
+                >
+                  <div className="w-12 h-12 rounded-full border border-indigo-50 bg-indigo-50/50 shadow-sm flex items-center justify-center mb-3 group-hover:bg-indigo-600 group-hover:border-indigo-600 group-hover:shadow-[0_5px_15px_rgba(99,102,241,0.3)] group-hover:scale-110 transition-all duration-400">
+                    <feature.icon className="w-5 h-5 text-indigo-600 group-hover:text-white transition-colors duration-400" strokeWidth={1.5} />
                   </div>
-                  <h4 className="font-bold text-slate-900 mb-3 text-lg">{feature.title}</h4>
-                  <p className="text-sm text-slate-500 leading-relaxed font-medium">{feature.desc}</p>
+                  <h4 className="font-bold text-slate-900 mb-2 text-sm md:text-base group-hover:text-indigo-600 transition-colors duration-300">{feature.title}</h4>
+                  <p className="text-xs text-slate-500 leading-relaxed font-medium group-hover:text-slate-700 transition-colors duration-300">{feature.desc}</p>
                 </div>
               ))}
             </div>
@@ -317,25 +347,25 @@ export default function PermanentHiring() {
       </section>
 
       {/* 2. WHY CHOOSE SECTION (From Screenshot) */}
-      <section className="py-24 px-6 lg:px-16 max-w-[1440px] mx-auto relative z-10 bg-white">
+      <section className="pt-10 pb-24 px-6 lg:px-16 max-w-[1440px] mx-auto relative z-10 bg-white">
         <div className="text-center mb-16 max-w-4xl mx-auto">
           <h2 className="font-display font-extrabold text-4xl md:text-5xl text-brand-dark mb-6 text-black">Why Choose DABSLEK For<br/>Permanent Hiring?</h2>
-          <p className="text-lg md:text-xl text-brand-muted leading-relaxed text-slate-600">Our AI-driven talent intelligence platform analyses millions of profiles, skills, and industry trends, helping us deliver candidates who aren't just qualified — but are the right fit for your business DNA.</p>
+          <p className="text-lg md:text-xl text-brand-muted leading-relaxed text-slate-600">Our AI-driven talent intelligence platform analyses millions of profiles, skills, and industry trends, helping us deliver candidates who aren't just qualified - but are the right fit for your business DNA.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
               title: "SMARTER TALENT MATCHING",
-              img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800"
+              img: smartTalentImg
             },
             {
               title: "FASTER HIRING CYCLES",
-              img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800"
+              img: fasterHiringImg
             },
             {
               title: "FUTURE-PROOF HIRING",
-              img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800"
+              img: futureProofImg
             }
           ].map((card, idx) => (
             <motion.div 
@@ -363,9 +393,9 @@ export default function PermanentHiring() {
       <StackedServices />
 
       {/* 4. WHEN TO CHOOSE SECTION */}
-      <section className="py-24 px-6 lg:px-16 max-w-[1440px] mx-auto bg-slate-50 my-12 rounded-[40px] shadow-sm border border-slate-100">
+      <section className="pt-8 pb-24 px-6 lg:px-16 max-w-[1440px] mx-auto bg-slate-50 mb-12 mt-0 rounded-[40px] shadow-sm border border-slate-100">
         <div className="text-center mb-16">
-          <h2 className="font-display font-extrabold text-4xl md:text-5xl text-slate-900 mb-6">When to Choose Permanent Staffing?</h2>
+          <h2 className="font-display font-extrabold text-4xl md:text-5xl text-slate-900 mb-6 mt-12">When to Choose Permanent Staffing?</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1 grid grid-cols-1 gap-8">
@@ -394,7 +424,7 @@ export default function PermanentHiring() {
             ))}
           </div>
           <div className="order-1 md:order-2 h-[500px] rounded-3xl overflow-hidden shadow-2xl">
-            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1000" alt="When to choose" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+            <img src={whenToChooseImg} alt="When to choose" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </div>
         </div>
       </section>

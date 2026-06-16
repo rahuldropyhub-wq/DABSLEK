@@ -362,7 +362,7 @@ export default function Home() {
             },
             {
               title: "Recruitment Process Outsourcing (RPO)",
-              desc: "Transfer your entire recruiting operations to us—from job profiles to screening, tracking, and final offers.",
+              desc: "Transfer your entire recruiting operations to us-from job profiles to screening, tracking, and final offers.",
               path: "/services/rpo",
               icon: Sliders,
               image: rpoCard,
@@ -963,7 +963,7 @@ export default function Home() {
               </h2>
 
               <p className="text-[#94A3B8] text-sm sm:text-base leading-relaxed mb-6 font-sans">
-                Our capability to manage elite operations is reflected in our association with the Tata IPL franchise Sunrisers Hyderabad (SRH). Running staffing logistics at the highest professional level demands precision, scalability, and fast execution—metrics DABSLEK delivers daily.
+                Our capability to manage elite operations is reflected in our association with the Tata IPL franchise Sunrisers Hyderabad (SRH). Running staffing logistics at the highest professional level demands precision, scalability, and fast execution-metrics DABSLEK delivers daily.
               </p>
 
               <div className="flex flex-wrap gap-6 mt-4">

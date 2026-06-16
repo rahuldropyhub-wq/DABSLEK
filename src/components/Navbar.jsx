@@ -190,7 +190,7 @@ export default function Navbar() {
       </div>
     </nav>
 
-      {/* Mobile Drawer Menu — outside <nav> to escape its stacking context */}
+      {/* Mobile Drawer Menu - outside <nav> to escape its stacking context */}
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed top-20 inset-x-0 bottom-0 bg-white border-t border-brand-border/60 z-[9999] flex flex-col">
           {/* Scrollable nav links area */}
@@ -270,7 +270,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Fixed CTA buttons at bottom — never scroll */}
+          {/* Fixed CTA buttons at bottom - never scroll */}
           <div className="flex-shrink-0 flex flex-col gap-4 p-6 pt-0 border-t border-brand-border/30">
             <Link
               to="/contact"

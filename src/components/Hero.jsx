@@ -291,7 +291,7 @@ export default function Hero() {
           {/* Right Column (Hero Illustration - 52%) */}
           <div id="services" className="lg:col-span-6 relative flex flex-col justify-center items-center py-4 lg:py-6 overflow-visible">
 
-            {/* Decorative elements — desktop only */}
+            {/* Decorative elements - desktop only */}
             {/* 1. Curved Purple Orbit Watermark */}
             <svg className="hidden lg:block absolute top-[5%] -right-16 w-[450px] h-[550px] text-brand-indigo/15 pointer-events-none z-10" viewBox="0 0 300 500" fill="none">
               <path d="M50 20 C 260 120, 260 380, 50 480" stroke="currentColor" strokeWidth="1.5" />
@@ -306,7 +306,7 @@ export default function Hero() {
               <circle cx="50" cy="250" r="240" stroke="currentColor" strokeWidth="1" />
             </svg>
 
-            {/* 3. Dotted Matrix Patterns — desktop only */}
+            {/* 3. Dotted Matrix Patterns - desktop only */}
             <svg className="hidden lg:block absolute top-12 right-24 opacity-30 text-brand-indigo/60 pointer-events-none z-10" width="80" height="80" fill="none" viewBox="0 0 80 80">
               <pattern id="dot-grid-tr" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
                 <circle cx="2" cy="2" r="2" fill="currentColor" />
@@ -317,7 +317,7 @@ export default function Hero() {
             {/* 4. Purple Diagonal Wave */}
             <div className="hidden lg:block absolute bottom-0 right-0 w-[55%] h-[35%] bg-gradient-to-tr from-[#8B5CF6]/35 to-transparent rounded-tl-[180px] blur-[10px] pointer-events-none z-10" />
 
-            {/* 5. Orbit Nodes — desktop only */}
+            {/* 5. Orbit Nodes - desktop only */}
             <div className="hidden lg:block absolute top-[16%] right-[11.5%] w-3 h-3 rounded-full bg-brand-violet shadow-[0_0_8px_rgba(139,92,246,0.6)] z-20" />
             <div className="hidden lg:block absolute top-[48.5%] right-[2.5%] w-3 h-3 rounded-full bg-brand-violet shadow-[0_0_8px_rgba(139,92,246,0.6)] z-20" />
             <div className="hidden lg:block absolute bottom-[23%] right-[12%] w-3 h-3 rounded-full bg-brand-violet shadow-[0_0_8px_rgba(139,92,246,0.6)] z-20" />
@@ -338,7 +338,7 @@ export default function Hero() {
               />
             </motion.div>
 
-            {/* Mobile Stats Strip — visible only on mobile/tablet, hidden on lg */}
+            {/* Mobile Stats Strip - visible only on mobile/tablet, hidden on lg */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -362,7 +362,7 @@ export default function Hero() {
               ))}
             </motion.div>
 
-            {/* 7. Floating KPI Cards — desktop only */}
+            {/* 7. Floating KPI Cards - desktop only */}
             {/* Card 1: 1000+ Candidates Placed */}
             <motion.div
               animate={{ y: [0, -8, 0] }}
